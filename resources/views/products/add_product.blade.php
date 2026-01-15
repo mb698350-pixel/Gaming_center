@@ -32,7 +32,7 @@
                         {{-- نام محصول --}}
                         <div class="mb-3">
                             <label class="form-label">نام محصول</label>
-                            <input type="text" name="product_name" class="form-control"required>
+                            <input type="text" name="product_name" class="form-control" placeholder="PS5 مثلا">
                         </div>
 
                         {{-- دسته بندی --}}
@@ -50,7 +50,7 @@
 
                         {{-- قیمت --}}
                         <div class="mb-3">
-                            <label class="form-label">قیمت (تومان)</label>
+                            <label class="form-label">قیمت </label>
                             <input type="number" name="price" class="form-control" placeholder="مثلاً 2500000" required>
                         </div>
 
