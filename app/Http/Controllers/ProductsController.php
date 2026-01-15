@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductsController extends Controller
+{
+public function list_products()
+{
+    $products=Product::with('category')->get();
+    return view('products.listproducts',compact('products'));
+}
+
+public function add_product()
+{
+    $category=Category::all();
+    return view('products.add_product',compact('category'));    
+}
+public function stor_product(Request $request)
+{
+    {
+        // 1. اعتبارسنجی ساده
+        $request->validate([
+            'product_name' => 'required|string|max:255',
+            'category_id'  => 'required|exists:categories,id',
+            'price'        => 'required|numeric',
+            'invertory'        => 'required|string',
+            'weight'       => 'nullable|string',
+            'image'        => 'nullable|string'
+        ]);
+
+
+
+        // 3. INSERT با Model
+        Product::create([
+            'name' => $request->product_name,
+            'category_id'=> $request->category_id,
+            'price'=> $request->price,
+            'inventory'=> $request->invertory,
+            'weight'=> $request->weight,
+            'image'=> $request->image,
+            'created_at'=>time()
+        ]);
+
+        // 4. ریدایرکت
+        return redirect()->route('list_products');
+    }
+}
+public function drop_products(Product $products,Request $request){
+        $product = Product::findOrFail($request->id);
+        $product->delete();
+        return redirect()->route('list_products');
+}
+
+}
