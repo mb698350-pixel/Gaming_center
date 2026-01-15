@@ -55,4 +55,15 @@ public function drop_products(Product $products,Request $request){
         return redirect()->route('list_products');
 }
 
+public function form_edit_product(Product $product)
+{
+    $category=Category::all();
+    return view('products.edit_product',compact('product','category'));
+}
+
+public function update_product(Product $product,Request $request)
+{
+    $product->update($request->all());
+    return redirect()->route('list_products');
+}
 }

@@ -51,9 +51,10 @@
                                                 Delete
                                             </button>
                                     </form>
-                                    <a href="#">
+                                    <a href="{{Route('form_edit_product',$item->id)}}">
                                         <button class="btn btn-warning btn-sm">Edit</button>
-                                    </a></td>
+                                    </a>
+                                </td>
                                 </tr>
                                 @endforeach
 

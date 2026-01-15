@@ -22,6 +22,8 @@ Route::get('/list_products',[ProductsController::class,'list_products'])->name('
 Route::get('/add_product',[ProductsController::class,'add_product'])->name('add_product');
 Route::post('/add_product',[ProductsController::class,'stor_product'])->name('products.store');
 Route::delete('/add_product/{id}',[ProductsController::class,'drop_products'])->name('delete_product');
+Route::get('/list_products/{product}/edit',[ProductsController::class, 'form_edit_product'])->name('form_edit_product');
+Route::patch('/list_products/{product}/edit',[ProductsController::class,'update_product'])->name('update_product');
 
 Route::get('dashboard/list_orders',[OrderController::class,'show_order'])->name('list_orders');
 Route::post('/dashboard/{product}',[OrderController::class,'add_order'])->middleware(['auth'])
