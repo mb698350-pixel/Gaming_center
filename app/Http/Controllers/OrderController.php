@@ -42,26 +42,19 @@ class OrderController extends Controller
 
     public function show_order(){
         $user=Auth::user();
-        $order = Order::where('user_id', $user->id)
-        ->where('status','pending')
-        ->first()
-        ->with('products');
+        $order = Order::with(['products.category']) 
+        ->where('user_id', $user->id)
+        ->where('status', 'pending')
+        ->first();
 
         if (!$order){
             return view('orders.order_show')->with('danger','شما سفارشی فعالی ندارید!!');
         }
 
-        $order_item=$order->products;
-dd($order_item);
-    //     foreach($order_item as $item){
-
-    //         $item_quantity=$item->pivot->quantity;
-    //     }
-    // return view('orders.order_show', [
-    //     'user'=>$user,
-    //     'order'=>$order,
-    //     'item_quantity'=>$item_quantity,
-    // ]);
+    return view('orders.order_show', [
+        'user'=>$user,
+        'order'=>$order,
+    ]);
 
     }
 }
