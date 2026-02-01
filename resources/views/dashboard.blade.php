@@ -80,7 +80,7 @@
                         </p>
 
                         <p class="fw-bold text-success">
-                            {{ $product->price }} تومان
+                            <td>{{ $product->formatted_price }} تومان</td>
                         </p>
                         <p class="fw-bold text-success">
                             {{ $product->weight }} :وزن

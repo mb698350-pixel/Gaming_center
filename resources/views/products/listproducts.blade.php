@@ -39,7 +39,7 @@
                                 <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$item->name}}</td>
-                                <td>{{$item->price}}</td>
+                                <td>{{ $item->formatted_price }} ریال</td>
                                 <td>{{$item->category->name}}</td>
                                 <td>{{$item->inventory}}</td>
                                 <td>{{$item->weight}}</td>

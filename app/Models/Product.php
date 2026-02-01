@@ -17,6 +17,17 @@ class Product extends Model
         'image',
     ];
 
+    protected $casts = [
+        'price' => 'decimal:2',
+    ];
+
+    protected $appends = ['formatted_price'];
+
+    public function getFormattedPriceAttribute()
+    {
+        return number_format((float) $this->price, 0);
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
