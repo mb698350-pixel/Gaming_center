@@ -35,6 +35,13 @@ class OrderController extends Controller
                 'quantity' => 1
             ]);
         }
+        $order->load('products');
+
+        $total = $order->products->sum(function ($item) {
+        return $item->price * $item->pivot->quantity;
+        });
+
+        $order->update(['total_price' => $total]);
 
         return redirect()->back()->with('success', 'محصول به سبد خرید اضافه شد');
     }
