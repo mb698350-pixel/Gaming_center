@@ -42,10 +42,6 @@
                                                               Delete
                                                           </button>
                                               </form>
-                                                    <a href="">
-                                                          <button class="btn btn-warning btn-sm">Edit</button>
-                                                    </a>
-
                                         </td>
                                     </tr>
                                     
@@ -59,7 +55,9 @@
                                                 <h4>جمع کل فاکتور</h4>
                                                 </div>
                                                 <div class="col">
-                                                One of three columns
+                                                <h4>
+                                                    {{ $order->formatted_price }} تومان
+                                                </h4>
                                                 </div>
                                                 
                                             </div>
