@@ -64,5 +64,44 @@ class OrderController extends Controller
     ]);
 
     }
+    public function delete_product_in_order(Product $product)
+    {
+        $user=Auth::user();
+
+        $order=Order::where('user_id', $user->id)
+        ->where('status','pending')
+        ->first();
+        
+        if(!$order){
+            return back()->with('danger','سبد خریدی وجود ندارد');
+        }
+
+        $pivot=$order->products()
+        ->where('product_id',$product->id)
+        ->first();
+
+         if (!$pivot) {
+        return back();
+        }
+
+        if($pivot->pivot->quantity>1){
+            $order->products()->updateExistingPivot(
+                $product->id,
+                ['quantity' => DB::raw('quantity - 1')]
+            );
+        }else{
+        $order->products()->detach($product->id);
+        }
+        $order->load('products');
+
+            // 🧮 محاسبه مجدد جمع فاکتور
+            $total = $order->products->sum(function ($item) {
+                return $item->price * $item->pivot->quantity;
+            });
+
+            $order->update(['total_price' => $total]);
+
+            return back()->with('success', 'محصول از سبد خرید حذف شد');
+}
 }
 

@@ -30,6 +30,8 @@ Route::post('/dashboard/{product}',[OrderController::class,'add_order'])->middle
 ->name('add_order');
 
 Route::post('/list_products/{product}',[OrderController::class,'add_order'])->name('add_order')->middleware(['auth']);
+Route::delete('/dashboard/list_orders/remove/{product}',[OrderController::class,'delete_product_in_order'])
+->name('delete_product_in_order');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
