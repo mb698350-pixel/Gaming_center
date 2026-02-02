@@ -16,7 +16,7 @@
                         <table class="table">
                               <thead>
                                     <tr>
-                                      <th scope="col"></th>
+                                      <th scope="col">شماره</th>
                                       <th scope="col">نام</th>
                                       <th scope="col">دسته بندی</th>
                                       <th scope="col">تعداد سفارش</th>
@@ -28,7 +28,7 @@
 
                                 @foreach($order->products as $item)
                                     <tr>
-                                        <td></td>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->category->name}}</td>
                                         <td>{{$item->pivot->quantity}}</td>
@@ -48,9 +48,22 @@
 
                                         </td>
                                     </tr>
+                                    
                                 @endforeach
+                                
                           </tbody>
                         </table>
+                            <div class="container text-center">
+                                            <div class="row align-items-start">
+                                                <div class="col">
+                                                <h4>جمع کل فاکتور</h4>
+                                                </div>
+                                                <div class="col">
+                                                One of three columns
+                                                </div>
+                                                
+                                            </div>
+                            </div>
                 </div>
     
             </div>
