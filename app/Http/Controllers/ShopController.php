@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,7 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
         $categoris=Category::all();
         $products=Product::with('category');
 
@@ -43,7 +45,7 @@ class ShopController extends Controller
         }
     }
      $products = $products->get();
-        return view('dashboard',compact('products','categoris'));
+        return view('dashboard',compact('products','categoris','user'));
     }
 
 
