@@ -23,7 +23,7 @@ class Checkadmin
 
         // اگر ایمیل کاربر admin نیست
         if (Auth::user()->email !== 'admin@gmail.com') {
-            abort(403);
+            abort(403,'!شما دسترسی به این صفحه ندارید');
         }
         return $next($request);
     }
