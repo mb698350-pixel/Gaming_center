@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     {
         return [         
             'name' => fake()->words(3, true), // نام محصول
-            'category_id' => fake()->numberBetween(2,5),
+            'category_id' => fake()->numberBetween(1,4),
             'price' => fake()->numberBetween(100_000, 5_000_000),
             'weight' => fake()->numberBetween(0.1, 10), // گرم
             'inventory' => fake()->numberBetween(0, 50),
