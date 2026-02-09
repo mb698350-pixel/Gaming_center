@@ -52,7 +52,7 @@
                                                 Delete
                                             </button>
                                     </form>
-                                    <a href="{{Route('form_edit_product',$item->id)}}">
+                                    <a href="{{Route('form_edit_product',$item->name)}}">
                                         <button class="btn btn-warning btn-sm">Edit</button>
                                     </a>
                                     @endcan

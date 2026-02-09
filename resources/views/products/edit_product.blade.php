@@ -26,7 +26,7 @@
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{Route('update_product',$product->id)}}">
+                    <form method="POST" action="{{Route('update_product',$product->name)}}">
                         @csrf
                         @method('PATCH')
                         {{-- نام محصول --}}

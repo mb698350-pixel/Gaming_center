@@ -29,7 +29,10 @@ class Product extends Model
     {
         return number_format((float) $this->price, 0);
     }
-
+        public function getRouteKeyName()
+            {
+                return 'name'; // یا slug
+            }
     public function category(){
         return $this->belongsTo(Category::class);
     }

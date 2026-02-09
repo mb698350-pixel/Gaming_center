@@ -35,7 +35,7 @@
                                         <td>{{ $item->formatted_price }} تومان</td>
                                         <td>
 
-                                              <form action="{{Route('delete_product_in_order',$item->id)}}" method="POST" style="display:inline;">
+                                              <form action="{{Route('delete_product_in_order',$item->name)}}" method="POST" style="display:inline;">
                                                       @csrf
                                                       @method('DELETE')
                                                           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('آیا از حذف محصول در سبد خرید اطمینان دارید؟')">
