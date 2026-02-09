@@ -20,7 +20,8 @@ class UserPolicy
      */
     public function view(User $user): bool
     {
-        return $user->email=='admin@gmail.com';
+        return $user->roles()->where('name', 'admin')
+            ->exists();
     }
 
     /**

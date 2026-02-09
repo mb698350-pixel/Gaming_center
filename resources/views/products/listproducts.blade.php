@@ -44,6 +44,7 @@
                                 <td>{{$item->inventory}}</td>
                                 <td>{{$item->weight}}</td>
                                 <td>
+                                    @cannot('admin-read-only')
                                     <form action="{{Route('delete_product',$item->id)}}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
@@ -54,6 +55,7 @@
                                     <a href="{{Route('form_edit_product',$item->id)}}">
                                         <button class="btn btn-warning btn-sm">Edit</button>
                                     </a>
+                                    @endcan
                                 </td>
                                 </tr>
                                 @endforeach

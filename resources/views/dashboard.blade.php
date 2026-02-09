@@ -49,7 +49,7 @@
                         </div>
                         </div>
                     </form>
-                    @can('view',$user)
+                    @cannot('view')
                     <a href="{{Route('list_products')}}">
                         <button type="button" class="btn btn-primary">پنل مدیریت محصولات</button>
                     </a>

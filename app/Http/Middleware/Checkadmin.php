@@ -21,9 +21,14 @@ class Checkadmin
             redirect('auth.login');
         }
 
-        // اگر ایمیل کاربر admin نیست
-        if (Auth::user()->email !== 'admin@gmail.com') {
-            abort(403,'!شما دسترسی به این صفحه ندارید');
+         $user = Auth::user();
+
+        $isAdmin = $user->roles()
+            ->where('name', 'admin')
+            ->exists();
+
+        if (! $isAdmin) {
+            abort(403, 'شما اجازه دسترسی به این بخش را ندارید');
         }
         return $next($request);
     }
