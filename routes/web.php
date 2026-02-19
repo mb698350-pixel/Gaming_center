@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,10 +14,10 @@ Route::get('/', function () {
 Route::get('/dashboard',[ShopController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::resource('post',PostController::class);
 Route::middleware('admin.email')->group(function(){
 
-Route::get('/list_products',[ProductsController::class,'list_products'])->name('list_products')->middleware('admin.email');
+Route::get('/list_products',[ProductsController::class,'list_products'])->name('list_products');
 Route::get('/add_product',[ProductsController::class,'add_product'])->name('add_product');
 Route::post('/add_product',[ProductsController::class,'stor_product'])->name('products.store');
 Route::delete('/add_product/{id}',[ProductsController::class,'drop_products'])->name('delete_product');

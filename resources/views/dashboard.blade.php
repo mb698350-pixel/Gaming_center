@@ -89,13 +89,14 @@
                         <p class="fw-bold text-success">
                             {{ $product->inventory }} :موجودی انبار
                         </p>
-                        <form action="{{Route('add_order',$product)}}" method="post">
+                    <form action="{{Route('add_order',$product)}}" method="post">
                             @csrf
                          <button type="submit" class="btn btn-success">اضافه کردن به سبد خرید</button>
                     </form>
                     </div>
-                    
-                    
+                    <small class="text-muted text-center">
+                   آخرین ویرایش :{{ $product->updated_at->diffForHumans() }}
+                    </small>
                 </div>
     
             </div>
